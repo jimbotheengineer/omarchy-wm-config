@@ -14,6 +14,14 @@ Validated using Hyprland 0.57.2 and native Noctalia 5.5.0.
   identifier, GitHub account string, email, MAC address, credential pattern or non-loopback
   IPv4 address found in the selected export.
 
+For the public-download update, workspace rules, layout shortcuts, window rules, decorations,
+and inputs were compared with the active source configuration and matched. Live read-only
+queries confirmed centered master with fraction `0.3337`, slave insertion, reserved center,
+and dwindle on the remaining numbered workspaces. The dwindle fallback was made explicit
+in the exported config so installation does not depend on a recipient's default layout.
+Public repository/release links identify the hosting account as expected; no source-machine
+identity was added to the configuration.
+
 The source user's live WM configuration and services were not changed. No real recipient
 Omarchy session was available for graphical activation testing. The export does not establish
 that a different recipient's displays, lock/auth setup, app packages or inference engines

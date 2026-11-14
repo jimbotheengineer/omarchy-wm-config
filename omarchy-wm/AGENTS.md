@@ -7,6 +7,11 @@ installation, using the included dragon wallpaper. Work as the recipient's deskt
 Inspect this bundle before running its scripts. Do not copy the source machine's home tree,
 install another distribution's repositories, or import anyone's account/session state.
 
+This file is specifically for agents. Keep human-facing overviews in `README.md`.
+Read [TILING.md](TILING.md) for the included layout and controls. Preserve the centered-master
+setup, dwindle fallback, workspace groups, layout shortcuts, and application rules while adapting
+display names to the recipient, unless they request a layout change.
+
 This is a **standalone profile**, not a small override layered on Omarchy defaults.
 `config/hypr/hyprland.lua` loads this bundle's modules and starts Noctalia. It does not load
 Omarchy's default shell or default keybindings. Core Omarchy programs remain installed, but
@@ -82,8 +87,11 @@ Edit the **bundle** before installation so the dry run checks the final configur
   Without a live session, the fallback is monitor index `"0"`; review assignments after login.
   For predictable monitor order, edit the installed variables after inspecting the actual outputs.
 - `workspaces.lua`: workspaces 1, 2, 3 and 7 use centered master on the first monitor;
-  4, 5, 6 and 8 use the second. On a single-monitor recipient all eight use that monitor.
-  The first group's center master fraction is about one third.
+  4, 5, 6 and 8 use dwindle on the second. `misc.lua` explicitly pins the default layout
+  to dwindle. On a single-monitor recipient all eight use that monitor. The master fraction
+  is `0.3337`, new windows are slaves, and `slave_count_for_center_master = 0` reserves
+  the center. Keep the master controls in `binds.lua`: Super+M centers/swaps with master
+  and sets its fraction to `0.5`; Super+Shift+M restores `0.3337`. Super+J toggles dwindle splits.
 - `inputs.lua`: set the recipient's `kb_layout` and any keyboard options explicitly if needed.
   The shipped digit shortcuts use physical keycodes and work independently of shifted digit
   symbols. Test them on the recipient's keyboard. Adjust touchpad gestures if unwanted.
@@ -140,6 +148,12 @@ transparency; launcher, notifications and volume; lock/unlock; screenshots saved
 focus/move shortcuts; and all workspaces. Screen sharing should use the recipient's existing
 Hyprland portal. If clipboard, tray, network or locking fails, inspect Noctalia logs and the
 recipient's service/portal setup before changing packages or disabling services.
+
+Specifically verify tiling with three ordinary app windows on workspace 1: centered master
+with side columns, approximately equal thirds. Test Super+M and Super+Shift+M. On a dwindle
+workspace, test a split and Super+J. Check `hyprctl -j workspaces` for the expected
+`tiledLayout` values and confirm that workspace routing works with the recipient's display
+count. Do not treat fullscreen games or deliberately floating utility windows as tiling failures.
 
 Useful bindings: Super+Return terminal; Super+Space launcher; Super+Z settings;
 Super+X control center; Super+L lock; Super+Shift+S region screenshot; Super+V clipboard;

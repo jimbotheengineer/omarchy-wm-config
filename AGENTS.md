@@ -1,6 +1,10 @@
-# Agent entry point
+# Instructions for agents
 
-For the WM installation or color customization, read `omarchy-wm/AGENTS.md` in full.
-For the optional custom bar plugin, read `noctalia-llm-plugin/AGENTS.md` in full.
-Keep the plugin optional and separate from the core desktop setup. Validate on the recipient's
-machine, retain its installation backup locally, and follow the documented rollback procedure.
+Read [README.agents.md](README.agents.md) before installing or customizing this export.
+Then read the complete package guide for the requested work:
+
+- Desktop setup, tiling, or color customization: [omarchy-wm/AGENTS.md](omarchy-wm/AGENTS.md).
+- Optional LLM bar plugin: [noctalia-llm-plugin/AGENTS.md](noctalia-llm-plugin/AGENTS.md).
+
+Keep the main `README.md` and package `README.md` files written for human readers.
+Put instructions addressed to agents in `README.agents.md` or the package `AGENTS.md` files.

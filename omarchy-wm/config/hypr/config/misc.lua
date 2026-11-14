@@ -1,4 +1,8 @@
 hl.config({
+    general = {
+        -- Pin the source profile's fallback layout instead of relying on defaults.
+        layout = "dwindle",
+    },
     dwindle = {
         preserve_split = true,
     },
