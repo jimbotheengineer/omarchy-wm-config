@@ -1,0 +1,27 @@
+[Unit]
+Description=vLLM server for Qwen3.8 27B
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=2
+
+[Service]
+Type=simple
+WorkingDirectory=%h/llm/vllm
+ExecStart=%h/llm/vllm/start-local.sh
+# This service is started explicitly by the vLLM switcher. Do not automatically
+# retry an OOMing launch and repeat its memory pressure.
+Restart=no
+TimeoutStopSec=20
+OOMPolicy=stop
+# Keep startup pressure inside this unit. If a future vLLM/model regression
+# exceeds these bounds, systemd kills vLLM instead of invoking the global OOM
+# killer against the desktop or unrelated applications.
+MemoryHigh=18G
+MemoryMax=22G
+MemorySwapMax=4G
+Environment=HF_HOME=%h/llm/vllm/models/hf-cache
+Environment=CUDA_VISIBLE_DEVICES=0
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

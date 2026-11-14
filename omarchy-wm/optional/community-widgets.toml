@@ -1,0 +1,21 @@
+["plugins"]
+"enabled" = [ "noctalia/bongocat", "noctalia/timer" ]
+
+["bar"]
+
+["bar"."default"]
+"start" = [ "launcher", "spacer_1", "group:g1" ]
+"center" = [ "cat", "workspaces", "spacer_1", "clock", "active_window" ]
+"end" = [ "media", "bar", "spacer_1", "tray", "notifications", "network", "volume", "session" ]
+
+["widget"]
+
+["widget"."cat"]
+"audio_spectrum" = true
+"rave_mode" = true
+"tappy_mode" = true
+"type" = "noctalia/bongocat:cat"
+"use_mpris_filter" = true
+
+["widget"."bar"]
+"type" = "noctalia/timer:bar"

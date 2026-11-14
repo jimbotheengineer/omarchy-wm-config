@@ -1,0 +1,21 @@
+id = "local/llm-control"
+name = "LLM Server Control"
+version = "1.3.0"
+plugin_api = 24
+license = "MIT"
+icon = "brain"
+description = "Switch between vLLM and NInfer, with model, vision and context controls."
+dependencies = ["systemctl", "python3"]
+tags = ["vllm", "ninfer", "llm", "systemd"]
+
+[[widget]]
+id = "toggle"
+entry = "widget.luau"
+
+[[panel]]
+id = "chooser"
+entry = "panel.luau"
+width = 560
+height = 820
+placement = "attached"
+open_near_click = true

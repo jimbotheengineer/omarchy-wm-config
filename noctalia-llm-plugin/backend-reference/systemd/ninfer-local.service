@@ -1,0 +1,21 @@
+[Unit]
+Description=NInfer selected Qwen3.8 27B model
+After=network-online.target vllm-local.service
+Conflicts=vllm-local.service
+StartLimitIntervalSec=300
+StartLimitBurst=2
+
+[Service]
+Type=simple
+WorkingDirectory=%h/ninfer
+ExecStart=/usr/bin/python3 %h/llm/control/server-control.py launch-ninfer
+Restart=no
+TimeoutStopSec=30
+OOMPolicy=stop
+MemoryHigh=24G
+MemoryMax=32G
+MemorySwapMax=2G
+Environment=CUDA_VISIBLE_DEVICES=0
+Environment=PYTHONUNBUFFERED=1
+
+# Intentionally no Install target: start explicitly from the bar, never at login.
